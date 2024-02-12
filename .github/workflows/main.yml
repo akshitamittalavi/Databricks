@@ -28,4 +28,4 @@ jobs:
     
       - name: Deploy code to databricks workspace
         run: |
-            databricks workspace import ${{github.workspace}} /Shared --language PYTHON --overwrite
+            databricks workspace import ${{github.workspace}} /Shared --overwrite
