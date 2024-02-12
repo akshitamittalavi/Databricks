@@ -18,7 +18,7 @@ jobs:
 
       - name: Databricks CLI config
         run: |
-            pip install databricks-cli 
+            curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
             cat > ~/.databrickscfg << EOF 
             [DEFAULT] 
             host = ${{ vars.DATABRICKS_HOST }} 
