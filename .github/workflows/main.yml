@@ -1,0 +1,29 @@
+name: databricks-cicd
+...
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    # Name of the environment you created
+    ...
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      # Install databricks CLI as per https://docs.databricks.com/dev-tools/cli/databricks-cli.html
+      - name: Install databricks CLI
+        run: |
+         curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+
+      - name: Databricks CLI config
+        run: |
+            pip install databricks-cli 
+            cat > ~/.databrickscfg << EOF 
+            [DEFAULT] 
+            host = ${{ var.DATABRICKS_HOST }} 
+            token = ${{ secrets.DATABRICKS_TOKEN }} 
+            jobs-api-version = 2.1 
+            EOF 
+    
+      - name: Deploy code to databricks workspace
+        run: |
+            databricks workspace import ${{github.workspace}} /Shared --language python --overwrite
