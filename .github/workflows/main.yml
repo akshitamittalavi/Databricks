@@ -24,7 +24,7 @@ jobs:
       #       [DEFAULT] 
       #       host = ${{ vars.DATABRICKS_HOST }} 
       #       token = ${{ secrets.DATABRICKS_TOKEN }} 
-      #       jobs-api-version = 2.1 
+      #       jobs-api-version= 2.1 
       #       EOF
             
       # - name: install-databricks-cli
@@ -44,7 +44,7 @@ jobs:
             echo [DEFAULT] > ~\.databrickscfg
             echo host=${{ vars.DATABRICKS_HOST }} >> ~\.databrickscfg
             echo token=${{ secrets.DATABRICKS_TOKEN }} >> ~\.databrickscfg
-            echo jobs-api-version = 2.1 >> ~\.databrickscfg
+            echo jobs-api-version=2.1 >> ~\.databrickscfg
 
       
       - name: Deploy code to databricks workspace
