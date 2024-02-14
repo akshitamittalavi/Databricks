@@ -35,8 +35,7 @@ jobs:
             # @echo off
             set "DATABRICKS_HOST=${{ vars.DATABRICKS_HOST }}"
             set "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}"
-            curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh -o install.sh
-            bash install.sh
+            curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
             echo [DEFAULT] > .\.databrickscfg
             echo host = %DATABRICKS_HOST% >> .\.databrickscfg
             echo token = %DATABRICKS_TOKEN% >> .\.databrickscfg
