@@ -27,15 +27,15 @@ jobs:
       #       jobs-api-version = 2.1 
       #       EOF
             
-      # - name: install-databricks-cli
-      #   uses: microsoft/install-databricks-cli@v1.0.0
+      - name: install-databricks-cli
+        uses: microsoft/install-databricks-cli@v1.0.0
 
       - name: Databricks CLI config
         run: |
             # @echo off
             set "DATABRICKS_HOST=${{ vars.DATABRICKS_HOST }}"
             set "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}"
-            curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+            # curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
             echo [DEFAULT] > .\.databrickscfg
             echo host = %DATABRICKS_HOST% >> .\.databrickscfg
             echo token = %DATABRICKS_TOKEN% >> .\.databrickscfg
