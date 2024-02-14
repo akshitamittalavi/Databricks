@@ -33,6 +33,7 @@ jobs:
       - name: Databricks CLI config
         run: |
             # @echo off
+            python -m pip install --upgrade pip
             pip install databricks-cli
             set "DATABRICKS_HOST=${{ vars.DATABRICKS_HOST }}"
             set "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}"
