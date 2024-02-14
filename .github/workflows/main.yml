@@ -20,7 +20,7 @@ jobs:
       # - name: Databricks CLI config
       #   run: |
       #       curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
-      #       cat > ./.databrickscfg << EOF 
+      #       cat > ~/.databrickscfg << EOF 
       #       [DEFAULT] 
       #       host = ${{ vars.DATABRICKS_HOST }} 
       #       token = ${{ secrets.DATABRICKS_TOKEN }} 
@@ -33,15 +33,16 @@ jobs:
       - name: Databricks CLI config
         run: |
             # @echo off
-            python -m pip install --upgrade pip
-            pip install databricks-cli
-            set "DATABRICKS_HOST=${{ vars.DATABRICKS_HOST }}"
-            set "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}"
-            # curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
-            echo [DEFAULT] > .\.databrickscfg
-            echo host = %DATABRICKS_HOST% >> .\.databrickscfg
-            echo token = %DATABRICKS_TOKEN% >> .\.databrickscfg
-            echo jobs-api-version = 2.1 >> .\.databrickscfg
+            # python -m pip install --upgrade pip
+            curl -LO https://github.com/databricks/cli/releases/download/v0.212.4/databricks_cli_0.212.4_windows_amd64.zip
+            # pip install databricks-cli
+            # set "DATABRICKS_HOST=${{ vars.DATABRICKS_HOST }}"
+            # set "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}"
+            # # curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+            # echo [DEFAULT] > .\.databrickscfg
+            # echo host = %DATABRICKS_HOST% >> .\.databrickscfg
+            # echo token = %DATABRICKS_TOKEN% >> .\.databrickscfg
+            # echo jobs-api-version = 2.1 >> .\.databrickscfg
 
       
       - name: Deploy code to databricks workspace
