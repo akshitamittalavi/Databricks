@@ -37,6 +37,7 @@ jobs:
             # curl -LO https://github.com/databricks/cli/releases/download/v0.212.4/databricks_cli_0.212.4_windows_amd64.zip
             # Expand-Archive -Path .\databricks_cli_0.212.4_windows_amd64.zip -DestinationPath .\extracted_folder
             pip install databricks-cli
+            databricks -v
             set "DATABRICKS_HOST=${{ vars.DATABRICKS_HOST }}"
             set "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}"
             # # curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
