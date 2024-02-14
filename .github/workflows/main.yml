@@ -42,8 +42,8 @@ jobs:
             set "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}"
             # # curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
             echo [DEFAULT] > ~\.databrickscfg
-            echo host = ${{ vars.DATABRICKS_HOST }} >> ~\.databrickscfg
-            echo token = ${{ secrets.DATABRICKS_TOKEN }} >> ~\.databrickscfg
+            echo host=${{ vars.DATABRICKS_HOST }} >> ~\.databrickscfg
+            echo token=${{ secrets.DATABRICKS_TOKEN }} >> ~\.databrickscfg
             echo jobs-api-version = 2.1 >> ~\.databrickscfg
 
       
