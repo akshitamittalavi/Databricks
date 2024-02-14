@@ -20,12 +20,16 @@ jobs:
       - name: Databricks CLI config
         run: |
             curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
-            cat > ~/.databrickscfg << EOF 
+            cat > %USERPROFILE%/.databrickscfg << EOF 
             [DEFAULT] 
             host = ${{ vars.DATABRICKS_HOST }} 
             token = ${{ secrets.DATABRICKS_TOKEN }} 
             jobs-api-version = 2.1 
             EOF
+            
+      # - name: install-databricks-cli
+      #   uses: microsoft/install-databricks-cli@v1.0.0
+          
     
       - name: Deploy code to databricks workspace
         run: |
